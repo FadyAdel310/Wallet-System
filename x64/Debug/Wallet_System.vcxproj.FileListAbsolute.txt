@@ -1,1 +1,2 @@
 F:\Programming\Wallet_System\Wallet_System\x64\Debug\Wallet_System.exe
+F:\Programming\c++ projects\Wallet-System\x64\Debug\Wallet_System.exe

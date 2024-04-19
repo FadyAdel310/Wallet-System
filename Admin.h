@@ -23,22 +23,22 @@ public:
 	//F15
 	static queue<Transaction> viewAllTransactions();
 
-	//F16
+	//F16 <= 11
 	static void depositBalance(string userName, float amount);
 	
-	//F17
+	//F17 <= 11
 	static void withdrawBalance(string userName, float amount);
 
-	//F18
+	//F18 <= 11
 	static bool deleteUserAccount(string userName);
 
-	//F19
+	//F19 <= 11
 	static bool suspendUser(string userName);
 
 	//F20
 	static queue<Transaction> viewUserTransactions(string userName);
 
-	//F21
+	//F21 <= 11
 	static bool editUserNameForUserAccount(string userName, string newUserName);
 
 };
