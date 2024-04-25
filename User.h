@@ -20,10 +20,10 @@ public:
 	//-----------------------------------
 	
 	//F1 <= 11
-	static bool registerAccount(string userName, string passWord);
+	static void registerAccount(string userName, string passWord);
 
 	//F2 <= 11
-	static bool login(string userName, string passWord);
+	static void login(string userName, string passWord);
 
 	//F3
 	float getBalance();
@@ -35,19 +35,19 @@ public:
 	void requestMoney(string senderNum, float amount);
 	
 	//F6
-	vector<Transaction> viewTransactions();
+	vector <Transaction> viewTransactions();
 
 	//F7
 	void editPassword(string newPassword);
 
 	//F8 <= 11
-	bool editUserName(string newUserName);
+	void editUserName(string newUserName);
 
 	//F9
 	queue<Request> viewRequests();
 
 	//F10
-	bool deleteRequest(string requestId);
+	void deleteRequest(string requestId);
 
 	//-----------------------------------
 

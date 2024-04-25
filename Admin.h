@@ -12,13 +12,13 @@ class Admin
 public:
 
 	//F12
-	static bool login(string userName, string passWord);
+	static void login(string userName, string passWord);
 
 	//F13
 	static vector<User> viewUsers();
 
 	//F14 <= 1
-	static bool addUserAcount(string userName, string passWord);
+	static void addUserAcount(string userName, string passWord);
 
 	//F15
 	static queue<Transaction> viewAllTransactions();
@@ -30,15 +30,15 @@ public:
 	static void withdrawBalance(string userName, float amount);
 
 	//F18 <= 11
-	static bool deleteUserAccount(string userName);
+	static void deleteUserAccount(string userName);
 
 	//F19 <= 11
-	static bool suspendUser(string userName);
+	static void suspendUser(string userName);
 
 	//F20
 	static queue<Transaction> viewUserTransactions(string userName);
 
 	//F21 <= 11
-	static bool editUserNameForUserAccount(string userName, string newUserName);
+	static void editUserNameForUserAccount(string userName, string newUserName);
 
 };

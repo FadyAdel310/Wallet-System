@@ -1,10 +1,11 @@
 #pragma once
 #include <map>
 #include <unordered_map>
-#include<set>
+#include <set>
 #include <string>
 #include "User.h"
 #include "Admin.h"
+#include "CustomExceptions.h"
 
 class System
 {
@@ -17,6 +18,9 @@ public:
 
 	//F11
 	static User getUserByUserName(string userName);
+
+	//F22
+	static void makeTransaction(Transaction newTransaction);
 
 };
 

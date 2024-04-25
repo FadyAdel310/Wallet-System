@@ -3,6 +3,7 @@
 using namespace std;
 class Request
 {
+	string requestId;
 	string userName;
 	string senderNum;
 	float amount;

@@ -136,6 +136,7 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="CustomExceptions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="Transaction.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="CustomExceptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
