@@ -9,6 +9,7 @@ class Request
 	float amount;
 public:
 	Request();
-	Request(string userName, string senderNum, float amount);
+	
+	Request(string requestId,string userName, string senderNum, float amount);
 };
 
