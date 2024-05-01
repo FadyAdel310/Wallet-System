@@ -10,8 +10,8 @@
 class System
 {
 public:
-	static unordered_map <string ,User> users;
-	static set <Transaction> transactions;
+	static unordered_map <string ,User> users;  // For Optimazation searching 
+	static queue <Transaction> transactions;
 	static Admin admin;
 
 	//------------------------------------

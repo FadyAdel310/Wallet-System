@@ -2,10 +2,10 @@
 #include <exception>
 using namespace std;
 
-class userNotFoundEx : public exception
+class userNotFound : public exception
 {
 public:
-	userNotFoundEx() {}
+	userNotFound() {}
 };
 
 class requestIdNotFound : public exception
@@ -20,10 +20,10 @@ public:
 	invalidDataToLogin() {}
 };
 
-class usernameExit : public exception
+class usernameUsed : public exception
 {
 public:
-	usernameExit() {}
+	usernameUsed() {}
 };
 
 class nonNegativityNum : public exception
