@@ -1,2 +1,10 @@
-﻿  CustomExceptions.cpp
+﻿  Source.cpp
+F:\Programming\c++ projects\Wallet-System\StringFunctions.h(11,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+F:\Programming\c++ projects\Wallet-System\StringFunctions.h(15,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\Programming\c++ projects\Wallet-System\Source.cpp(11,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  System.cpp
+F:\Programming\c++ projects\Wallet-System\StringFunctions.h(11,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+F:\Programming\c++ projects\Wallet-System\StringFunctions.h(15,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+F:\Programming\c++ projects\Wallet-System\FileHandler.h(37): warning C4715: 'FileHandler::ReadFromFile': not all control paths return a value
   Wallet_System.vcxproj -> F:\Programming\c++ projects\Wallet-System\x64\Debug\Wallet_System.exe

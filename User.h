@@ -8,12 +8,12 @@
 using namespace std;
 class User
 {
+public:
 	string userName;
 	string passWord;
 	float balance;
 	bool activation;
 	queue <Request> userRequests;
-public:
 	User();
 	User(string fullName, string userName, string passWord);
 

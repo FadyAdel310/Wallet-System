@@ -6,6 +6,7 @@
 using namespace std;
 class Transaction
 {
+public:
 	string senderNum;
 	string recipientNum;
 	Date transactionDate;
@@ -18,5 +19,6 @@ class Transaction
 		this->transactionDate = Date::getTodayDate();
 		this->transactionTime = Time::getTimeNow();
 	}
+	Transaction(){}
 };
 

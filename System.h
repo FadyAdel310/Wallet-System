@@ -6,21 +6,34 @@
 #include "User.h"
 #include "Admin.h"
 #include "CustomExceptions.h"
+#include "FileHandler.h"
+#include <vector>
+
+using namespace std;
 
 class System
 {
 public:
-	static unordered_map <string ,User> users;  // For Optimazation searching 
-	static queue <Transaction> transactions;
-	static Admin admin;
+	unordered_map <string, User> users;  // For Optimazation searching 
+	queue <Transaction> transactions;
+	Admin admin;
 
 	//------------------------------------
 
 	//F11
-	static User getUserByUserName(string userName);
+	 User getUserByUserName(string userName);
 
 	//F22
-	static void makeTransaction(Transaction newTransaction);
+	 void makeTransaction(Transaction newTransaction);
+
+
+	//---------- Files ------------
+	 void loadDataFromFiles();
+
+	 void loadUsersData();
+	 void loadRequestsDate();
+	 void loadAdminData();
+	 void loadTransactionsData();
 
 };
 

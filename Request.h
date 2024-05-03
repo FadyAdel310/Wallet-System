@@ -3,13 +3,14 @@
 using namespace std;
 class Request
 {
-	string requestId;
+public:
 	string userName;
+	string requestId;
 	string senderNum;
 	float amount;
-public:
-	Request();
 	
+	Request();
+
 	Request(string requestId,string userName, string senderNum, float amount);
 };
 

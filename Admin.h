@@ -7,38 +7,38 @@
 using namespace std;
 class Admin
 {
-	static string userName;
-	static string passWord;
 public:
+	 string userName;
+	 string passWord;
 
 	//F12
-	static void login(string userName, string passWord);
+	 void login(string userName, string passWord);
 
 	//F13
-	static vector<User> viewUsers();
+	 vector<User> viewUsers();
 
 	//F14 <= 1
-	static void addUserAcount(string userName, string passWord);
+	 void addUserAcount(string userName, string passWord);
 
 	//F15
-	static queue<Transaction> viewAllTransactions();
+	 queue<Transaction> viewAllTransactions();
 
 	//F16 <= 11
-	static void depositBalance(string userName, float amount);
+	 void depositBalance(string userName, float amount);
 	
 	//F17 <= 11
-	static void withdrawBalance(string userName, float amount);
+	 void withdrawBalance(string userName, float amount);
 
 	//F18 <= 11
-	static void deleteUserAccount(string userName);
+	 void deleteUserAccount(string userName);
 
 	//F19 <= 11
-	static void suspendUser(string userName);
+	 void suspendUser(string userName);
 
 	//F20
-	static queue<Transaction> viewUserTransactions(string userName);
+	 queue<Transaction> viewUserTransactions(string userName);
 
 	//F21 <= 11
-	static void editUserNameForUserAccount(string userName, string newUserName);
+	 void editUserNameForUserAccount(string userName, string newUserName);
 
 };
