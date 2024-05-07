@@ -1,5 +1,17 @@
 #include "System.h"
+#include "CustomExceptions.h"
 
+//F11
+User System::getUserByUserName(string userName) {
+	if (this->users[userName].userName == "") {
+		throw userNotFound();
+	}
+	else {
+		return this->users[userName];
+	}
+}
+
+// ====================Files=============
 void System::loadDataFromFiles() {
 	loadUsersData();
 	loadRequestsData();

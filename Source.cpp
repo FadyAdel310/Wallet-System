@@ -12,7 +12,7 @@ void main() {
 	mainWallet.loadDataFromFiles();
 
 	cout << "Welcome .. " << endl;
-
+	
 	mainWallet.saveDataIntoFiles();
-
+	
 }
