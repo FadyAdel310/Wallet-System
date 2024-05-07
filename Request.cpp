@@ -16,3 +16,9 @@ Request::Request(string requestId, string userName, string senderNum, float amou
 	this->amount = amount;
 
 }
+
+// ==================================
+
+string Request::toString() {
+	return this->userName + "&" + this->requestId + "&" + this->senderNum + "&" + to_string(this->amount) ;
+}

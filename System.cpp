@@ -2,7 +2,7 @@
 
 void System::loadDataFromFiles() {
 	loadUsersData();
-	loadRequestsDate();
+	loadRequestsData();
 	loadAdminData();
 	loadTransactionsData();
 }
@@ -18,7 +18,7 @@ void System::loadUsersData() {
 		this->users.insert(make_pair(dataRow[0], tempUser));
 	}
 }
-void System::loadRequestsDate() {
+void System::loadRequestsData() {
 	vector<string> dataList = FileHandler::ReadFromFile("F:/Programming/c++ projects/Wallet-System/files/requests.txt");
 	for (int i = 0; i < dataList.size(); i++) {
 		vector <string> dataRow = StringFunctions::split(dataList[i], '&');
@@ -51,4 +51,57 @@ void System::loadTransactionsData() {
 		tempTr.amount = stof(dataRow[4]);
 		this->transactions.push(tempTr);
 	}
+}
+
+
+
+void System::saveDataIntoFiles() {
+	saveUsersData();
+	saveRequestsData();
+	saveAdminData();
+	saveTransactionsData();
+}
+void System::saveUsersData() {
+	
+	string* dataList = new string[this->users.size()];
+	unordered_map<string, User>::iterator it;
+	int i = 0;
+	for (it = this->users.begin();it != this->users.end();it++) {
+		dataList[i] = it->second.toString();
+		i++;
+	}
+	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/users.txt", this->users.size(), dataList);
+
+}
+void System::saveRequestsData() {
+	int requestsSize = 0;
+	for (auto it = this->users.begin();it != this->users.end();it++) {
+		requestsSize += it->second.userRequests.size();
+	}
+	string* dataList = new string[requestsSize];
+	int c = 0;
+	for (auto it = this->users.begin();it != this->users.end();it++) {
+		while(!it->second.userRequests.empty()) {
+			dataList[c] = it->second.userRequests.front().toString();
+			it->second.userRequests.pop();
+			c++;
+		}
+	}
+	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/requests.txt", requestsSize, dataList);
+}
+void System::saveAdminData() {
+	string* dataList = new string[1];
+	dataList[0] = this->admin.toString();
+	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/admin.txt", 1, dataList);
+}
+void System::saveTransactionsData() {
+	string* dataList = new string[this->transactions.size()];
+	int i = 0;
+	while (!this->transactions.empty()) {
+		dataList[i] = this->transactions.front().toString();
+		this->transactions.pop();
+		i++;
+	}
+
+	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/transactions.txt", i, dataList);
 }

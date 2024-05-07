@@ -29,11 +29,15 @@ public:
 
 	//---------- Files ------------
 	 void loadDataFromFiles();
-
 	 void loadUsersData();
-	 void loadRequestsDate();
+	 void loadRequestsData();
 	 void loadAdminData();
 	 void loadTransactionsData();
 
+	 void saveDataIntoFiles();
+	 void saveUsersData();
+	 void saveRequestsData();
+	 void saveAdminData();
+	 void saveTransactionsData();
 };
 

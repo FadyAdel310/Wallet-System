@@ -20,5 +20,9 @@ public:
 		this->transactionTime = Time::getTimeNow();
 	}
 	Transaction(){}
+
+	// ==============================================================
+
+	string toString();
 };
 

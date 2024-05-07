@@ -83,15 +83,15 @@ public:
 	}
 
 	string toString() {
-		return to_string(day) + "-" + to_string(month) + "-" + to_string(year) + "\n";
+		return to_string(day) + "-" + to_string(month) + "-" + to_string(year) ;
 	}
 
 	static Date getTodayDate() {
 		Date dateObj;
 		vector<string> itemsList = StringFunctions::split(__DATE__, ' ');
-		dateObj.day = stoi(itemsList[1]);
+		dateObj.day = stoi(itemsList[2]);
 		dateObj.month = stoi(Date::getMonthVal(itemsList[0]));
-		dateObj.year = stoi(itemsList[2]);
+		dateObj.year = stoi(itemsList[3]);
 		dateObj.validateDaysOfMonth();
 		return dateObj;
 	}

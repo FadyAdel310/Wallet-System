@@ -41,4 +41,7 @@ public:
 	//F21 <= 11
 	 void editUserNameForUserAccount(string userName, string newUserName);
 
+	 //========================================
+
+	 string toString();
 };
