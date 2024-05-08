@@ -1,0 +1,4 @@
+3 senarios to view transactions :
+admin view all => need old data
+admin to specific user => No need
+user to his profile => need old data

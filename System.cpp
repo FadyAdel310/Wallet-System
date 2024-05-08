@@ -1,13 +1,19 @@
 #include "System.h"
 #include "CustomExceptions.h"
 
+using namespace std;
+
+unordered_map<string, User> System::users;
+queue <Transaction> System::transactions;
+Admin System::admin;
+
 //F11
-User System::getUserByUserName(string userName) {
-	if (this->users[userName].userName == "") {
+User* System::getUserByUserName(string userName) {
+	if (System::users[userName].userName == "") {
 		throw userNotFound();
 	}
 	else {
-		return this->users[userName];
+		return &System::users[userName];
 	}
 }
 
@@ -27,7 +33,7 @@ void System::loadUsersData() {
 		tempUser.passWord = dataRow[1];
 		tempUser.balance = stof(dataRow[2]);
 		tempUser.activation = dataRow[3] == "1";
-		this->users.insert(make_pair(dataRow[0], tempUser));
+		users.insert(make_pair(dataRow[0], tempUser));
 	}
 }
 void System::loadRequestsData() {
@@ -39,15 +45,15 @@ void System::loadRequestsData() {
 		tmpRequest.requestId = dataRow[1];
 		tmpRequest.senderNum = dataRow[2];
 		tmpRequest.amount = stof(dataRow[3]);
-		this->users[dataRow[0]].userRequests.push(tmpRequest);
+		System::users[dataRow[0]].userRequests.push(tmpRequest);
 	}
 
 }
 void System::loadAdminData() {
 	vector<string> dataList = FileHandler::ReadFromFile("F:/Programming/c++ projects/Wallet-System/files/admin.txt");
 	vector <string> dataRow = StringFunctions::split(dataList[0], '&');
-	this->admin.userName = dataRow[0];
-	this->admin.passWord = dataRow[1];
+	System::admin.userName = dataRow[0];
+	System::admin.passWord = dataRow[1];
 }
 void System::loadTransactionsData() {
 	vector<string> dataList = FileHandler::ReadFromFile("F:/Programming/c++ projects/Wallet-System/files/transactions.txt");
@@ -61,11 +67,9 @@ void System::loadTransactionsData() {
 		tempTr.transactionDate = tmpTransactionDate;
 		tempTr.transactionTime = tmpTransactionTime;
 		tempTr.amount = stof(dataRow[4]);
-		this->transactions.push(tempTr);
+		System::transactions.push(tempTr);
 	}
 }
-
-
 
 void System::saveDataIntoFiles() {
 	saveUsersData();
@@ -75,24 +79,24 @@ void System::saveDataIntoFiles() {
 }
 void System::saveUsersData() {
 	
-	string* dataList = new string[this->users.size()];
+	string* dataList = new string[System::users.size()];
 	unordered_map<string, User>::iterator it;
 	int i = 0;
-	for (it = this->users.begin();it != this->users.end();it++) {
+	for (it = System::users.begin();it != System::users.end();it++) {
 		dataList[i] = it->second.toString();
 		i++;
 	}
-	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/users.txt", this->users.size(), dataList);
+	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/users.txt", System::users.size(), dataList);
 
 }
 void System::saveRequestsData() {
 	int requestsSize = 0;
-	for (auto it = this->users.begin();it != this->users.end();it++) {
+	for (auto it = System::users.begin();it != System::users.end();it++) {
 		requestsSize += it->second.userRequests.size();
 	}
 	string* dataList = new string[requestsSize];
 	int c = 0;
-	for (auto it = this->users.begin();it != this->users.end();it++) {
+	for (auto it = System::users.begin();it != System::users.end();it++) {
 		while(!it->second.userRequests.empty()) {
 			dataList[c] = it->second.userRequests.front().toString();
 			it->second.userRequests.pop();
@@ -103,15 +107,15 @@ void System::saveRequestsData() {
 }
 void System::saveAdminData() {
 	string* dataList = new string[1];
-	dataList[0] = this->admin.toString();
+	dataList[0] = System::admin.toString();
 	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/admin.txt", 1, dataList);
 }
 void System::saveTransactionsData() {
-	string* dataList = new string[this->transactions.size()];
+	string* dataList = new string[System::transactions.size()];
 	int i = 0;
-	while (!this->transactions.empty()) {
-		dataList[i] = this->transactions.front().toString();
-		this->transactions.pop();
+	while (!System::transactions.empty()) {
+		dataList[i] = System::transactions.front().toString();
+		System::transactions.pop();
 		i++;
 	}
 

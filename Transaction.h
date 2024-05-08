@@ -19,7 +19,13 @@ public:
 		this->transactionDate = Date::getTodayDate();
 		this->transactionTime = Time::getTimeNow();
 	}
-	Transaction(){}
+	Transaction(){
+		this->senderNum = "";
+		this->recipientNum = "";
+		this->amount = 0;
+		this->transactionDate = Date::getTodayDate();
+		this->transactionTime = Time::getTimeNow();
+	}
 
 	// ==============================================================
 

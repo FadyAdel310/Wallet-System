@@ -14,30 +14,32 @@ using namespace std;
 class System
 {
 public:
-	unordered_map <string, User> users;  // For Optimazation searching 
-	queue <Transaction> transactions;
-	Admin admin;
+	static unordered_map <string, User> users;  // For Optimazation searching 
+	static queue <Transaction> transactions;
+	static Admin admin;
+
+	
 
 	//------------------------------------
 
 	//F11
-	 User getUserByUserName(string userName);
+	static User* getUserByUserName(string userName);
 
 	//F22
-	 void makeTransaction(Transaction newTransaction);
+	static void makeTransaction(Transaction newTransaction);
 
 
 	//---------- Files ------------
-	 void loadDataFromFiles();
-	 void loadUsersData();
-	 void loadRequestsData();
-	 void loadAdminData();
-	 void loadTransactionsData();
+	static void loadDataFromFiles();
+	static void loadUsersData();
+	static void loadRequestsData();
+	static void loadAdminData();
+	static void loadTransactionsData();
 
-	 void saveDataIntoFiles();
-	 void saveUsersData();
-	 void saveRequestsData();
-	 void saveAdminData();
-	 void saveTransactionsData();
+	static void saveDataIntoFiles();
+	static void saveUsersData();
+	static void saveRequestsData();
+	static void saveAdminData();
+	static void saveTransactionsData();
 };
 

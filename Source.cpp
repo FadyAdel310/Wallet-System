@@ -7,12 +7,12 @@
 
 using namespace std;
 
-void main() {
-	System mainWallet;
-	mainWallet.loadDataFromFiles();
+int main() {
 
+	System::loadDataFromFiles();
 	cout << "Welcome .. " << endl;
 	
-	mainWallet.saveDataIntoFiles();
+	//System::saveDataIntoFiles();
+	return 0;
 	
 }

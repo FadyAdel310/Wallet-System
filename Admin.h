@@ -40,7 +40,9 @@ public:
 
 	//F21 <= 11
 	 void editUserNameForUserAccount(string userName, string newUserName);
-
+	 
+	//F23
+	 void activateUser(string username);
 	 //========================================
 
 	 string toString();
