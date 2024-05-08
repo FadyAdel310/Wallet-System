@@ -65,6 +65,19 @@ queue<Transaction> Admin::viewUserTransactions(string userName) {
 	return userTransactions;
 }
 
+//F21
+void Admin::editUserNameForUserAccount(string userName, string newUserName) {
+	User* specificUser = new User;
+	specificUser = System::getUserByUserName(userName);
+	if (System::users[newUserName].userName == "") {
+		specificUser->userName = newUserName;
+	}
+	else {
+		throw usernameUsed();
+	}
+
+}
+
 // F23
 void Admin::activateUser(string userName) {
 	User* specificUser = new User;

@@ -17,6 +17,11 @@ User* System::getUserByUserName(string userName) {
 	}
 }
 
+//F22
+void System::makeTransaction(Transaction newTransaction) {
+	System::transactions.push(newTransaction);
+}
+
 // ====================Files=============
 void System::loadDataFromFiles() {
 	loadUsersData();
