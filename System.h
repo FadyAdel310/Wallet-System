@@ -28,6 +28,8 @@ public:
 	//F22
 	static void makeTransaction(Transaction newTransaction);
 
+	//F23
+	static string generateRequestId(string userName);
 
 	//---------- Files ------------
 	static void loadDataFromFiles();
