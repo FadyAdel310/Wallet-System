@@ -1,2 +1,3 @@
-﻿  Source.cpp
+﻿  User.cpp
+F:\Programming\c++ projects\Wallet-System\Date.h(55): warning C4715: 'Date::getMonthVal': not all control paths return a value
   Wallet_System.vcxproj -> F:\Programming\c++ projects\Wallet-System\x64\Debug\Wallet_System.exe

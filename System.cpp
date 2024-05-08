@@ -17,6 +17,19 @@ User* System::getUserByUserName(string userName) {
 	}
 }
 
+
+//F23
+string System::generateRequestId(string userName) {
+	User* specificUser = System::getUserByUserName(userName);
+	if (specificUser->userRequests.size() == 0) {
+		return "1";
+	}
+	else {
+		int newNumber = specificUser->userRequests.size() + 1;
+		return to_string(newNumber);
+	}
+}
+
 // ====================Files=============
 void System::loadDataFromFiles() {
 	loadUsersData();

@@ -8,6 +8,12 @@ public:
 	userNotFound() {}
 };
 
+class userSuspention : public exception
+{
+public:
+	userSuspention() {}
+};
+
 class requestIdNotFound : public exception
 {
 public:
