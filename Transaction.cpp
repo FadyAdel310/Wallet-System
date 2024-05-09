@@ -1,5 +1,8 @@
 #include "Transaction.h"
 
+string Transaction::display() {
+	return this->senderNum + " ==> " + this->recipientNum + "\t" + to_string(this->amount) + "\t" + this->transactionDate.toString() + "\t" + this->transactionTime.toString();
+}
 
 // ============================
 

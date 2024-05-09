@@ -13,7 +13,7 @@ public:
 
 	Request(string requestId,string userName, string senderNum, float amount);
 
-
+	string display();
 
 	// ============================
 

@@ -15,7 +15,7 @@ public:
 	bool activation;
 	queue <Request> userRequests;
 	User();
-	User(string fullName, string userName, string passWord);
+	User(string userName, string passWord);
 
 	//-----------------------------------
 	
@@ -35,7 +35,7 @@ public:
 	void requestMoney(string senderNum, float amount);
 	
 	//F6
-	vector <Transaction> viewTransactions();
+	queue<string> viewTransactions();
 
 	//F7
 	void editPassword(string newPassword);
@@ -44,14 +44,18 @@ public:
 	void editUserName(string newUserName);
 
 	//F9
-	queue<Request> viewRequests();
+	queue<string> viewRequests();
 
 	//F10
 	void deleteRequest(string requestId);
 
+	//F24
+	string display();
+	
 	//-----------------------------------
 
 	string toString();
+
 
 };
 

@@ -2,6 +2,50 @@
 #include "System.h"
 
 
+//F12
+void Admin::login(string userName, string passWord) {
+	if (this->userName != userName || this->passWord != passWord) {
+		throw invalidDataToLogin();
+	}
+}
+
+//F13
+vector<string> Admin::viewUsers() {
+	if (System::users.size() == 0) {
+		throw emptyData();
+	}
+	else {
+		unordered_map<string, User>::iterator it;
+		vector<string> usersDisplay;
+		for (it = System::users.begin();it != System::users.end();it++) {
+			usersDisplay.push_back(it->second.display());
+		}
+		return usersDisplay;
+	}
+}
+
+//F14 <= 1
+void Admin::addUserAcount(string userName, string passWord) {
+	User::registerAccount(userName,passWord);
+}
+
+//F15
+queue<string> AdminviewAllTransactions() {
+	queue<string> allTransactionsDisplayed;
+	queue<Transaction> allTransactions = System::transactions;
+	if (allTransactions.size() == 0) {
+		throw emptyData();
+	}
+	else {
+		while (!allTransactions.empty())
+		{
+			allTransactionsDisplayed.push(allTransactions.front().display());
+			allTransactions.pop();
+		}
+	}
+	return allTransactionsDisplayed;
+
+}
 
 
 // F16
@@ -48,21 +92,10 @@ void Admin::suspendUser(string userName) {
 }
 
 // F20
-queue<Transaction> Admin::viewUserTransactions(string userName) {
+queue<string> Admin::viewUserTransactions(string userName) {
 	User* specificUser = new User;
 	specificUser = System::getUserByUserName(userName);
-	queue<Transaction> userTransactions;
-	queue<Transaction> allTransactions = System::transactions;
-	while (!allTransactions.empty())
-	{
-		if (allTransactions.front().senderNum == specificUser->userName ||
-			allTransactions.front().recipientNum == specificUser->userName) {
-			userTransactions.push(System::transactions.front());
-		}
-		allTransactions.pop();
-	}
-	
-	return userTransactions;
+	return specificUser->viewTransactions();
 }
 
 //F21

@@ -15,13 +15,13 @@ public:
 	 void login(string userName, string passWord);
 
 	//F13
-	 vector<User> viewUsers();
+	 vector<string> viewUsers();
 
 	//F14 <= 1
 	 void addUserAcount(string userName, string passWord);
 
 	//F15
-	 queue<Transaction> viewAllTransactions();
+	 queue<string> viewAllTransactions();
 
 	//F16 <= 11
 	 void depositBalance(string userName, float amount);
@@ -36,7 +36,7 @@ public:
 	 void suspendUser(string userName);
 
 	//F20
-	 queue<Transaction> viewUserTransactions(string userName);
+	 queue<string> viewUserTransactions(string userName);
 
 	//F21 <= 11
 	 void editUserNameForUserAccount(string userName, string newUserName);

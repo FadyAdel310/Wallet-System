@@ -18,6 +18,10 @@ User* System::getUserByUserName(string userName) {
 }
 
 
+//F22
+void System::makeTransaction(Transaction newTransaction) {
+	System::transactions.push(newTransaction);
+}
 
 //F23
 string System::generateRequestId(string userName) {
@@ -26,7 +30,7 @@ string System::generateRequestId(string userName) {
 		return "1";
 	}
 	else {
-		int newNumber = specificUser->userRequests.size() + 1;
+		int newNumber = stoi(specificUser->userRequests.back().requestId) + 1;
 		return to_string(newNumber);
 	}
 }

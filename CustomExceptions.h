@@ -14,6 +14,12 @@ public:
 	userSuspention() {}
 };
 
+class weakPassword : public exception
+{
+public:
+	weakPassword() {}
+};
+
 class requestIdNotFound : public exception
 {
 public:
