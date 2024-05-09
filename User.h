@@ -25,9 +25,6 @@ public:
 	//F2 <= 11
 	static void login(string userName, string passWord);
 
-	//F3
-	float getBalance();
-
 	//F4 <= 11
 	void sendMoney(string userName, float amount);
 
@@ -41,7 +38,7 @@ public:
 	void editPassword(string newPassword);
 
 	//F8 <= 11
-	void editUserName(string newUserName);
+	//void editUserName(string newUserName);
 
 	//F9
 	queue<string> viewRequests();

@@ -99,11 +99,11 @@ queue<string> Admin::viewUserTransactions(string userName) {
 }
 
 //F21
-void Admin::editUserNameForUserAccount(string userName, string newUserName) {
-	User* specificUser = new User;
-	specificUser = System::getUserByUserName(userName);
-	specificUser->editUserName(newUserName);
-}
+//void Admin::editUserNameForUserAccount(string userName, string newUserName) {
+//	User* specificUser = new User;
+//	specificUser = System::getUserByUserName(userName);
+//	specificUser->editUserName(newUserName);
+//}
 
 // F23
 void Admin::activateUser(string userName) {

@@ -9,7 +9,7 @@ Admin System::admin;
 
 //F11
 User* System::getUserByUserName(string userName) {
-	if (System::users[userName].userName == "") {
+	if (System::users.find(userName) == System::users.end()) {
 		throw userNotFound();
 	}
 	else {
@@ -36,6 +36,7 @@ string System::generateRequestId(string userName) {
 }
 
 // ====================Files=============
+
 void System::loadDataFromFiles() {
 	loadUsersData();
 	loadRequestsData();

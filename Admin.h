@@ -38,8 +38,8 @@ public:
 	//F20
 	 queue<string> viewUserTransactions(string userName);
 
-	//F21 <= 11
-	 void editUserNameForUserAccount(string userName, string newUserName);
+	////F21 <= 11
+	// void editUserNameForUserAccount(string userName, string newUserName);
 	 
 	//F23
 	 void activateUser(string username);

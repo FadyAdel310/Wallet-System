@@ -38,11 +38,6 @@ void User::login(string userName, string passWord) {
 	}
 }
 
-//F3
-float User::getBalance() {
-	return this->balance;
-}
-
 //F4 <= 11 && <= 22
 void User::sendMoney(string userName, float amount) {
 	User* specificUser = System::getUserByUserName(userName);
@@ -100,7 +95,7 @@ queue<string> User::viewTransactions() {
 
 //F7
 void User::editPassword(string newPassword) {
-	if (newPassword.length() <= 4) {
+	if (newPassword.length() < 4) {
 		throw weakPassword();
 		return;
 	}
@@ -110,14 +105,14 @@ void User::editPassword(string newPassword) {
 }
 
 //F8 <=11
-void User::editUserName(string newUserName) {
-	if (System::users.find(newUserName) == System::users.end() ) {
-		this->userName = newUserName;
-	}
-	else {
-		throw usernameUsed();
-	}
-}
+//void User::editUserName(string newUserName) {
+//	if (System::users.find(newUserName) == System::users.end() ) {
+//		this->userName = newUserName;
+//	}
+//	else {
+//		throw usernameUsed();
+//	}
+//}
 
 //F9
 queue<string> User::viewRequests() {
@@ -132,6 +127,7 @@ queue<string> User::viewRequests() {
 			requestsDisplay.push(tempUserRequests.front().display());
 			tempUserRequests.pop();
 		}
+		return requestsDisplay;
 	}
 }
 

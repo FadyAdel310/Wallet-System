@@ -8,16 +8,7 @@
 using namespace std;
 
 // ================= helper Functions :
-bool isValidFloatNumber(string input) {
-	bool isNumber = true;
-	for (char c : input) {
-		if (!isdigit(c)) {
-			isNumber = false;
-			break;
-		}
-	}
-	return isNumber;
-}
+
 void displayQueue(queue<string> q) {
 	while (!q.empty())
 	{
@@ -69,7 +60,7 @@ void userFunctionsForAdminRole(User * specificUser) {
 	cout << "\n--------------------------\n";
 	cout << specificUser->display() << endl;
 	cout << "--------------------------\n";
-	cout << "\n[1] Deposit\n[2] Withdraw\n[3] View his/him Transactions\n[4] Edit his/him Username";
+	cout << "\n[1] Deposit\n[2] Withdraw\n[3] View his/him Transactions\n[4] Edit his/him Password";
 	cout << "\n[5] Suspend This User\n[6] Activate This User\n[7] Delete This Account\n[8] Back to menu ..\n\n";
 	cout << "Enter Your Choice .. : ";
 	string choice;
@@ -77,14 +68,10 @@ void userFunctionsForAdminRole(User * specificUser) {
 	if (choice == "1") {
 		try {
 			cout << "Enter Amount To Deposit : ";
-			string amount;
+			float amount;
 			cin >> amount;
-			if (isValidFloatNumber(amount)) {
-				System::admin.depositBalance(specificUser->userName, stof(amount));
-				cout << "\nThis User Have Deposited Successfully .. \n\n";
-			}
-			else
-				cout << "Amount MUST Be Valid Number ..\n";
+			System::admin.depositBalance(specificUser->userName, amount);
+			cout << "\nThis User Have Deposited Successfully .. \n\n";
 		}
 		catch (nonNegativityNum ex) {
 			cout << "Amount Can NOT Be Negative Or Zero ..\n";
@@ -93,14 +80,11 @@ void userFunctionsForAdminRole(User * specificUser) {
 	else if (choice == "2") {
 		try {
 			cout << "Enter Amount To Withdraw : ";
-			string amount;
+			float amount;
 			cin >> amount;
-			if (isValidFloatNumber(amount)) {
-				System::admin.withdrawBalance(specificUser->userName, stof(amount));
-				cout << "\nThis User Have Withdrawed Successfully .. \n\n";
-			}
-			else
-				cout << "Amount MUST Be Valid Number ..\n";
+			System::admin.withdrawBalance(specificUser->userName, amount);
+			cout << "\nThis User Have Withdrawed Successfully .. \n\n";
+
 		}
 		catch (nonNegativityNum ex) {
 			cout << "Amount Can NOT Be Negative Or Zero ..\n";
@@ -125,18 +109,17 @@ void userFunctionsForAdminRole(User * specificUser) {
 		}
 	}	
 	else if (choice == "4") {
-		cout << "\nEnter New Username For This User : ";
-		string oldUserName = specificUser->userName;
-		string newUserName;
-		cin >> newUserName;
+		cout << "\nEnter New Password For This User : ";
+		string password;
+		cin >> password;
 		try
 		{
-			System::admin.editUserNameForUserAccount(specificUser->userName, newUserName);
-			cout << "\n" + oldUserName + " Have Been Changed To " + newUserName + " successfully ..\n\n";
+			specificUser->editPassword(password);
+			cout << "\n\nYour Password Have Been Changed Successfully .. \n\n";
 		}
-		catch (usernameUsed ex)
+		catch (weakPassword ex)
 		{
-			cout << "\n This Username Is Already Exist .. \n";
+			cout << "\n\n This Password Is Weak .. Password Length Must Be 4 Or Greater Than \n\n";
 		}
 	}	
 	else if (choice == "5") {
@@ -225,15 +208,132 @@ void adminDashboard() {
 	}
 	adminDashboard();
 }
-void UserDashboard(User *currentUser) {
-	cout << currentUser->userRequests.size() << endl;
+void userDashboard(User *currentUser) {
+	cout << "\n******* User Dashboard *******\n" << endl;
+	cout << "--------------------------\n";
+	cout << "UserName\tPassword\tAmount\tStatus\n";
+	cout << "--------------------------\n";
+	cout << currentUser->display() << endl;;
+	cout << "--------------------------\n\n";
+	cout << "[1] Send Money To User\n[2] Request Money From User\n[3] Show My Transactions\n";
+	cout << "[4] Show My Requests From Others\n[5] Delete Request From My List\n[6] Edit My Password\n[7] Log out\n\n";
+	cout << "Enter Your Choice : >> ";
+	string choice;cin >> choice;
+	if (choice == "1") {
+		string userName;
+		float amount;
+		cout << "\n\nEnter Username For Receipent : ";
+		cin >> userName;
+		cout << "\n\nEnter Amount To Send : ";
+		cin >> amount;
+		try {
+			currentUser->sendMoney(userName, amount);
+			cout << "\n\nMoney Have Been Sent Successfully To " + userName + "\n\n";
+		}
+		catch (userNotFound ex) {
+			cout << "\n\nThis Username Is Not Exist In System ..\n\n";
+		}
+		catch (nonNegativityNum ex) {
+			cout << "\n\nAmount Can Not Be Negative Or Zero ..\n\n";
+		}
+		catch (insufficientBalance ex) {
+			cout << "\n\nInsufficient Balance .. Amount Are Greater Than Your Balance ..\n\n";
+		}
+		catch (userSuspention ex) {
+			cout << "\n\nUser Who Is Suspended Can Not Send Or Receive Money ..\n\n";
+		}
+	}
+	else if (choice == "2") {
+		string userName;
+		float amount;
+		cout << "\n\nEnter Username For Request From : ";
+		cin >> userName;
+		cout << "\n\nEnter Amount To Send : ";
+		cin >> amount;
+		try {
+			currentUser->requestMoney(userName, amount);
+			cout << "\n\nMoney Have Been Requested Successfully from " + userName + "\n\n";
+		}
+		catch (userNotFound ex) {
+			cout << "\n\nThis Username Is Not Exist In System ..\n\n";
+		}
+		catch (nonNegativityNum ex) {
+			cout << "\n\nAmount Can Not Be Negative Or Zero ..\n\n";
+		}
+		catch (userSuspention ex) {
+			cout << "\n\nUser Who Is Suspended Can Not Send Or Receive Money ..\n\n";
+		}
+	}
+	else if (choice == "3") {
+		try {
+			if (System::admin.viewUserTransactions(currentUser->userName).size() == 0) {
+				cout << "\nThere Is No Transactions For This User ..\n";
+			}
+			else {
+				cout << "\nSender\tReceipent\tAmount\tDate\tTime\n";
+				cout << "--------------------------\n";
+				displayQueue(System::admin.viewUserTransactions(currentUser->userName));
+			}
+		}
+		catch (emptyData ex) {
+			cout << "\nThere Is No Transactoins In System ..\n\n";
+		}
+	}
+	else if (choice == "4") {
+		cout << "\n\n Id\tSender\tamount\n";
+		cout << "--------------------------------\n";
+		try {
+			displayQueue(currentUser->viewRequests());
+		}
+		catch (emptyData ex) {
+			cout << "\n\nThere Is No Requests For Your Up To Now ..\n\n";
+		}
+	}
+	else if (choice == "5") {
+		if(currentUser->userRequests.size()==0)
+			cout << "\n\nThere Is No Requests For Your Up To Now ..\n\n";
+		else {
+			cout << "\n\n Id\tSender\tamount\n";
+			cout << "\n--------------------------------\n";
+				displayQueue(currentUser->viewRequests());
+			cout << "\n--------------------------------\n";
+			cout << "\nEnter Request ID For Delete : ";
+			string id;
+			cin >> id;
+			try {
+				currentUser->deleteRequest(id);
+			}
+			catch (requestIdNotFound ex) {
+				cout << "\n\nRequest Id You Entered Not Found .. \n\n";
+			}
+		}
+	}
+
+	else if (choice == "6") {
+		cout << "\nEnter New Password For You : ";
+		string newPassword;
+		cin >> newPassword;
+		try
+		{
+			currentUser->editPassword(newPassword);
+			cout << "\n\nYour Password Have Been Changed Successfully .. \n\n";
+		}
+		catch (weakPassword ex)
+		{
+			cout << "\n\n This Password Is Weak .. Password Length Must Be 4 Or Greater Than \n\n";
+		}
+	}
+	else if (choice=="7")
+	{
+		return;
+	}
+	userDashboard(currentUser);
 }
 
 int main() {
 	string choice;
 	do {
 		System::loadDataFromFiles();
-		cout << "t : " << System::users.size() << endl;
 		cout << "\n[1] Admin\n[2] User\n[3] Exit\n\nEnter Your Choice .." << endl;
 		cin >> choice;
 		if (choice == "1") {
@@ -269,7 +369,11 @@ int main() {
 				{
 					User::login(userName, password);
 					User* currentUser = System::getUserByUserName(userName);
-					UserDashboard(currentUser);
+					userDashboard(currentUser);
+				}
+				catch (userNotFound ex)
+				{
+					cout << "\nIncorrect Username Or Password To Login ..\n" << endl;
 				}
 				catch (invalidDataToLogin ex)
 				{
@@ -284,7 +388,6 @@ int main() {
 			}
 		}
 		System::saveDataIntoFiles();
-
 	} while (choice != "3");
 	
 }
