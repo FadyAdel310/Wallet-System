@@ -17,11 +17,7 @@ User* System::getUserByUserName(string userName) {
 	}
 }
 
-<<<<<<< HEAD
-//F22
-void System::makeTransaction(Transaction newTransaction) {
-	System::transactions.push(newTransaction);
-=======
+
 
 //F23
 string System::generateRequestId(string userName) {
@@ -33,7 +29,6 @@ string System::generateRequestId(string userName) {
 		int newNumber = specificUser->userRequests.size() + 1;
 		return to_string(newNumber);
 	}
->>>>>>> 4df429c3203e2742f0d9fe5a4ca27bbceb17925d
 }
 
 // ====================Files=============

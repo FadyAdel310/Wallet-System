@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 
-	//System::loadDataFromFiles();
+	System::loadDataFromFiles();
 	cout << "Welcome .. " << endl;
 	
 	//System::saveDataIntoFiles();
