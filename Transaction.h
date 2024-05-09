@@ -12,20 +12,8 @@ public:
 	Date transactionDate;
 	Time transactionTime;
 	float amount;
-	Transaction(string senderNum,string recipientNum,float amount){
-		this->senderNum = senderNum;
-		this->recipientNum = recipientNum;
-		this->amount = amount;
-		this->transactionDate = Date::getTodayDate();
-		this->transactionTime = Time::getTimeNow();
-	}
-	Transaction(){
-		this->senderNum = "";
-		this->recipientNum = "";
-		this->amount = 0;
-		this->transactionDate = Date::getTodayDate();
-		this->transactionTime = Time::getTimeNow();
-	}
+	Transaction(string senderNum, string recipientNum, float amount);
+	Transaction();
 
 	string display();
 

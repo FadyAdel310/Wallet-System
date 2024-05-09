@@ -30,7 +30,7 @@ void Admin::addUserAcount(string userName, string passWord) {
 }
 
 //F15
-queue<string> AdminviewAllTransactions() {
+queue<string> Admin::viewAllTransactions() {
 	queue<string> allTransactionsDisplayed;
 	queue<Transaction> allTransactions = System::transactions;
 	if (allTransactions.size() == 0) {
@@ -78,8 +78,8 @@ void Admin::withdrawBalance(string userName, float amount) {
 // F18
 void Admin::deleteUserAccount(string userName) {
 	User* specificUser = new User;
-	specificUser = System::getUserByUserName(userName); // to verfiy if user is not found
-	System::users.erase(userName);
+	specificUser = System::getUserByUserName(userName);
+	System::users.erase(specificUser->userName);
 }
 
 // F19
@@ -87,7 +87,7 @@ void Admin::suspendUser(string userName) {
 	User* specificUser = new User;
 	specificUser = System::getUserByUserName(userName);
 	if (specificUser->activation == false)
-		throw usernameUsed();
+		throw userSuspention();
 	specificUser->activation = false;
 }
 
@@ -102,13 +102,7 @@ queue<string> Admin::viewUserTransactions(string userName) {
 void Admin::editUserNameForUserAccount(string userName, string newUserName) {
 	User* specificUser = new User;
 	specificUser = System::getUserByUserName(userName);
-	if (System::users[newUserName].userName == "") {
-		specificUser->userName = newUserName;
-	}
-	else {
-		throw usernameUsed();
-	}
-
+	specificUser->editUserName(newUserName);
 }
 
 // F23
@@ -116,7 +110,7 @@ void Admin::activateUser(string userName) {
 	User* specificUser = new User;
 	specificUser = System::getUserByUserName(userName);
 	if (specificUser->activation == true)
-		throw usernameUsed();
+		throw userSuspention();
 	specificUser->activation = true;
 }
 

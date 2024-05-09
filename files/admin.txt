@@ -1,1 +1,1 @@
-newAdmin&newAdminpassword
+admin&admin

@@ -17,15 +17,16 @@ User::User(string userName,string passWord) {
 
 //F1 <= 11
 void User::registerAccount(string userName, string passWord) {
-	if (userName == "") {
-		throw userNotFound();
-	}
-	else if (System::users[userName].userName != "") {
+	if (System::users[userName].userName != "") {
 		throw usernameUsed();
 	}
 	else {
-		User newUser(userName, passWord);
-		System::users.insert(make_pair(userName, newUser));
+		User tempUser;
+		tempUser.userName = userName;
+		tempUser.passWord = passWord;
+		tempUser.balance = 0;
+		tempUser.activation = true;
+		System::users[userName] = tempUser;
 	}
 }
 
@@ -110,7 +111,7 @@ void User::editPassword(string newPassword) {
 
 //F8 <=11
 void User::editUserName(string newUserName) {
-	if (System::users[newUserName].userName == "") {
+	if (System::users.find(newUserName) == System::users.end() ) {
 		this->userName = newUserName;
 	}
 	else {
