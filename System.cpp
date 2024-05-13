@@ -44,7 +44,7 @@ void System::loadDataFromFiles() {
 	loadTransactionsData();
 }
 void System::loadUsersData() {
-	vector<string> dataList = FileHandler::ReadFromFile("F:/Programming/c++ projects/Wallet-System/files/users.txt");
+	vector<string> dataList = FileHandler::ReadFromFile("files/users.txt");
 	for (int i = 0; i < dataList.size(); i++) {
 		vector <string> dataRow = StringFunctions::split(dataList[i], '&');
 		User tempUser;
@@ -56,7 +56,7 @@ void System::loadUsersData() {
 	}
 }
 void System::loadRequestsData() {
-	vector<string> dataList = FileHandler::ReadFromFile("F:/Programming/c++ projects/Wallet-System/files/requests.txt");
+	vector<string> dataList = FileHandler::ReadFromFile("files/requests.txt");
 	for (int i = 0; i < dataList.size(); i++) {
 		vector <string> dataRow = StringFunctions::split(dataList[i], '&');
 		Request tmpRequest;
@@ -69,13 +69,13 @@ void System::loadRequestsData() {
 
 }
 void System::loadAdminData() {
-	vector<string> dataList = FileHandler::ReadFromFile("F:/Programming/c++ projects/Wallet-System/files/admin.txt");
+	vector<string> dataList = FileHandler::ReadFromFile("files/admin.txt");
 	vector <string> dataRow = StringFunctions::split(dataList[0], '&');
 	System::admin.userName = dataRow[0];
 	System::admin.passWord = dataRow[1];
 }
 void System::loadTransactionsData() {
-	vector<string> dataList = FileHandler::ReadFromFile("F:/Programming/c++ projects/Wallet-System/files/transactions.txt");
+	vector<string> dataList = FileHandler::ReadFromFile("files/transactions.txt");
 	for (int i = 0; i < dataList.size(); i++) {
 		vector <string> dataRow = StringFunctions::split(dataList[i], '&');
 		Transaction tempTr;
@@ -105,7 +105,7 @@ void System::saveUsersData() {
 		dataList[i] = it->second.toString();
 		i++;
 	}
-	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/users.txt", System::users.size(), dataList);
+	FileHandler::WriteInFile("files/users.txt", System::users.size(), dataList);
 
 }
 void System::saveRequestsData() {
@@ -122,12 +122,12 @@ void System::saveRequestsData() {
 			c++;
 		}
 	}
-	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/requests.txt", requestsSize, dataList);
+	FileHandler::WriteInFile("files/requests.txt", requestsSize, dataList);
 }
 void System::saveAdminData() {
 	string* dataList = new string[1];
 	dataList[0] = System::admin.toString();
-	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/admin.txt", 1, dataList);
+	FileHandler::WriteInFile("files/admin.txt", 1, dataList);
 }
 void System::saveTransactionsData() {
 	string* dataList = new string[System::transactions.size()];
@@ -138,5 +138,5 @@ void System::saveTransactionsData() {
 		i++;
 	}
 
-	FileHandler::WriteInFile("F:/Programming/c++ projects/Wallet-System/files/transactions.txt", i, dataList);
+	FileHandler::WriteInFile("files/transactions.txt", i, dataList);
 }

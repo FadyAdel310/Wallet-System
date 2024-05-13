@@ -89,9 +89,9 @@ public:
 	static Date getTodayDate() {
 		Date dateObj;
 		vector<string> itemsList = StringFunctions::split(__DATE__, ' ');
-		dateObj.day = stoi(itemsList[2]);
+		dateObj.day = stoi(itemsList[1]);
 		dateObj.month = stoi(Date::getMonthVal(itemsList[0]));
-		dateObj.year = stoi(itemsList[3]);
+		dateObj.year = stoi(itemsList[2]);
 		dateObj.validateDaysOfMonth();
 		return dateObj;
 	}

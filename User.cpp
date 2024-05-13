@@ -133,7 +133,7 @@ queue<string> User::viewRequests() {
 
 //F10
 void User::deleteRequest(string requestId) {
-	if (stoi(requestId) < 1 || stoi(requestId) > this->userRequests.size()) {
+	if (stoi(requestId) < 1 || stoi(requestId) > stoi(this->userRequests.back().requestId)) {
 		cout << stoi(requestId) << endl;
 		throw requestIdNotFound();
 	}
