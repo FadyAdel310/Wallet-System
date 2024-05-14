@@ -42,6 +42,15 @@ void registerUser() {
 		else
 			return;
 	}
+	catch (weakPassword ex) {
+		cout << "This Password Is Weak .. Password Length Must Be 4 Or More" << endl;
+		cout << "[1] Try Again \n[2] Exit\n";
+		string choice;cin >> choice;
+		if (choice != "2")
+			registerUser();
+		else
+			return;
+	}
 }
 
 // F25
@@ -123,7 +132,7 @@ void userFunctionsForAdminRole(User * specificUser) {
 		}
 		catch (weakPassword ex)
 		{
-			cout << "\n\n This Password Is Weak .. Password Length Must Be 4 Or Greater Than \n\n";
+			cout << "\n\n This Password Is Weak .. Password Length Must Be 4 Or More \n\n";
 		}
 	}	
 	else if (choice == "5") {
@@ -324,7 +333,7 @@ void userDashboard(User *currentUser) {
 		}
 		catch (weakPassword ex)
 		{
-			cout << "\n\n This Password Is Weak .. Password Length Must Be 4 Or Greater Than \n\n";
+			cout << "\n\n This Password Is Weak .. Password Length Must Be 4 Or More \n\n";
 		}
 	}
 	else if (choice=="7")
