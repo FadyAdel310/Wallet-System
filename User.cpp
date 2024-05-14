@@ -16,10 +16,17 @@ User::User(string userName,string passWord) {
 	this->activation = true;
 }
 
+bool User::validLengthPassword(string password) {
+	return password.length() >= 4;
+}
+
 //F1 <= 11
 void User::registerAccount(string userName, string passWord) {
 	if (System::users[userName].userName != "") {
 		throw usernameUsed();
+	}
+	else if (!User::validLengthPassword(passWord)) {
+		throw weakPassword();
 	}
 	else {
 		User tempUser;
@@ -96,7 +103,7 @@ queue<string> User::viewTransactions() {
 
 //F7
 void User::editPassword(string newPassword) {
-	if (newPassword.length() < 4) {
+	if (!User::validLengthPassword(newPassword)) {
 		throw weakPassword();
 		return;
 	}

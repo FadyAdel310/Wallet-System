@@ -18,6 +18,8 @@ public:
 	User();
 	User(string userName, string passWord);
 
+	static bool validLengthPassword(string password);
+
 	//-----------------------------------
 	
 	//F1 <= 11
