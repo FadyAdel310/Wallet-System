@@ -14,6 +14,7 @@ public:
 	float balance;
 	bool activation;
 	queue <Request> userRequests;
+
 	User();
 	User(string userName, string passWord);
 
@@ -37,16 +38,13 @@ public:
 	//F7
 	void editPassword(string newPassword);
 
-	//F8 <= 11
-	//void editUserName(string newUserName);
-
 	//F9
 	queue<string> viewRequests();
 
 	//F10
 	void deleteRequest(string requestId);
 
-	//F24
+
 	string display();
 	
 	//-----------------------------------

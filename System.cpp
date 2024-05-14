@@ -17,13 +17,12 @@ User* System::getUserByUserName(string userName) {
 	}
 }
 
-
 //F22
 void System::makeTransaction(Transaction newTransaction) {
 	System::transactions.push(newTransaction);
 }
 
-//F23
+//F27
 string System::generateRequestId(string userName) {
 	User* specificUser = System::getUserByUserName(userName);
 	if (specificUser->userRequests.size() == 0) {

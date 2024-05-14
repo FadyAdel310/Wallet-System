@@ -18,8 +18,6 @@ public:
 	static queue <Transaction> transactions;
 	static Admin admin;
 
-	
-
 	//------------------------------------
 
 	//F11
@@ -28,7 +26,7 @@ public:
 	//F22
 	static void makeTransaction(Transaction newTransaction);
 
-	//F23
+	//F27
 	static string generateRequestId(string userName);
 
 	//---------- Files ------------

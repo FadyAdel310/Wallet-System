@@ -12,8 +12,9 @@ public:
 	Date transactionDate;
 	Time transactionTime;
 	float amount;
-	Transaction(string senderNum, string recipientNum, float amount);
+
 	Transaction();
+	Transaction(string senderNum, string recipientNum, float amount);
 
 	string display();
 

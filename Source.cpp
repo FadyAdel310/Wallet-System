@@ -16,10 +16,12 @@ void displayQueue(queue<string> q) {
 		q.pop();
 	}
 }
+
 // ================= helper Functions :
 
 
 // ================= main sub Functions :
+// F24
 void registerUser() {
 	cout << "\n========== User Register Page ..==========\n" << endl;
 	string userName, password;
@@ -41,13 +43,13 @@ void registerUser() {
 			return;
 	}
 }
+
+// F25
 void displayAllUsersForAdminRole() {
 	try {
+		cout << "\nUserName\tPassword\tAmount\tStatus\n";
+		cout << "--------------------------\n";
 		for (int i = 0; i < System::admin.viewUsers().size(); i++) {
-			if (i == 0) {
-				cout << "\nUserName\tPassword\tAmount\tStatus\n";
-				cout << "--------------------------\n";
-			}
 			cout << System::admin.viewUsers().at(i) << endl;
 		}
 		cout << "--------------------------\n";
@@ -56,6 +58,8 @@ void displayAllUsersForAdminRole() {
 		cout << "There Is No Users In System .." << endl;
 	}
 }
+
+// F26
 void userFunctionsForAdminRole(User * specificUser) {
 	cout << "\n--------------------------\n";
 	cout << specificUser->display() << endl;

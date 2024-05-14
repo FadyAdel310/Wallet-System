@@ -8,6 +8,7 @@ User::User() {
 	this->balance = 0;
 	this->activation = false;
 }
+
 User::User(string userName,string passWord) {
 	this->userName = userName ;
 	this->passWord = passWord;
@@ -104,16 +105,6 @@ void User::editPassword(string newPassword) {
 	}
 }
 
-//F8 <=11
-//void User::editUserName(string newUserName) {
-//	if (System::users.find(newUserName) == System::users.end() ) {
-//		this->userName = newUserName;
-//	}
-//	else {
-//		throw usernameUsed();
-//	}
-//}
-
 //F9
 queue<string> User::viewRequests() {
 	queue<string> requestsDisplay;
@@ -151,7 +142,6 @@ void User::deleteRequest(string requestId) {
 	}
 }
 
-// F24
 string User::display() {
 	string activationStat = this->activation == true ? "active" : "inactive";
 	return this->userName + "\t" + this->passWord + "\t" + to_string(this->balance) + "\t" + activationStat;
